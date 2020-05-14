@@ -6,29 +6,36 @@ import PhotoCard from "./components/PhotoCard";
 import Information from "./components/Information";
 
 
-function App() {
+const App = _ => {
 
-  const {nasa, setNasa } = useState({})
+  const [apod, setApod] = useState(null)
+
 
   useEffect(() => {
     axios
       .get(`https://api.nasa.gov/planetary/apod?api_key=hzbjykgYdMZ2MHqBc2tp19mNzF9sg5MwDbGoyo3p`)
       .then(res => {
-        setNasa(res.data)
-        console.log(nasa)
+        console.log(res)
+        setApod(res.data)
       })
       .catch(err => {
         console.log('Error: ', err)
       })
     }, [])
 
+  if(!apod) {
+    return "Getting data ..."
+  }
+
+
+
   return (
     <div className="App">
-      <Header title={nasa} />
+      <Header title={apod.title} />
       {/* props needed, title={title} */}
-      <PhotoCard image={nasa}/>
+      <PhotoCard image={apod.hdurl} />
        {/* props needed, image={hdurl} */}
-       <Information explanation={nasa}/>
+       <Information explanation={apod.explanation} />
        {/* props needed, explanation={explanation} */}
     </div>
   );

@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Information() {
+const Information = props => {
     return (
         <div>
-            
+            <p>{props.explanation}</p>
         </div>
     )
 }

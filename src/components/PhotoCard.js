@@ -1,11 +1,11 @@
 import React, { useState, useEffect }  from "react";
-import axios from "axios";
 
-function PhotoCard() {
+
+const PhotoCard = props => {
+    console.log(props)
     return (
         <div>
-           
-         
+           <img src={props.image} />
         </div>
     )
 }

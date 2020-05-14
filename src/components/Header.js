@@ -4,10 +4,10 @@ function Header(props) {
     return (
         <div>
             <h1>
-                NASA Photo of the Day
+                NASA's Photo of the Day
             </h1>
             <h2>
-                {/* nasa.title */}
+                {props.title}
             </h2>
         </div>
     )
